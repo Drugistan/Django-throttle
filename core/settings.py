@@ -122,8 +122,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
-        'burst': '2/day',
-        'postBurst': "3/day",
+        'get_throttle': '2/day',
+        'post_throttle': "3/day",
 
     }
 }
