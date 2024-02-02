@@ -18,7 +18,12 @@ class BookSerializer(serializers.ModelSerializer):
 
 
 class BookView(APIView):
-
+    def get_throttles(self):
+        if self.request.method == 'GET':
+            return [ForGetViewThrottle()]
+        if self.request.method == 'POST':
+            return [ForPostViewThrottle]
+        return super().get_throttles()
 
     def get(self, request):
         self.throttle_classes = [ForGetViewThrottle]
